@@ -43,26 +43,6 @@ def list_tasks() -> list:
     return load_tasks()
 
 
-def complete_task(task_id: int) -> str:
-    tasks = load_tasks()
-
-    for task in tasks:
-        if task["id"] == task_id:
-            task["completed"] = True
-
-            with open(TASKS_FILE, "w", encoding="utf-8") as file:
-                json.dump(
-                    tasks,
-                    file,
-                    ensure_ascii=False,
-                    indent=2,
-                )
-
-            return "Task completed successfully."
-
-    return "Task not found."
-
-
 create_task_tool = {
     "type": "function",
     "name": "create_task",
@@ -93,33 +73,32 @@ list_tasks_tool = {
 }
 
 
-complete_task_tool = {
-    "type": "function",
-    "name": "complete_task",
-    "description": "Mark a task as completed using its task ID.",
-    "parameters": {
-        "type": "object",
-        "properties": {
-            "task_id": {
-                "type": "integer",
-                "description": "The ID of the task to complete",
-            }
-        },
-        "required": ["task_id"],
-        "additionalProperties": False,
-    },
-}
-
-
 TOOLS = {
     "create_task": create_task,
     "list_tasks": list_tasks,
-    "complete_task": complete_task,
 }
 
 
 TOOL_SCHEMAS = [
     create_task_tool,
     list_tasks_tool,
-    complete_task_tool,
 ]
+
+def complete_task(task_id: int) -> str:
+    tasks = load_tasks()
+
+    for task in tasks:
+        if task["id"] == task_id:
+            task["completed"] = True
+
+            with open(TASKS_FILE, "w", encoding="utf-8") as file:
+                json.dump(
+                    tasks,
+                    file,
+                    ensure_ascii=False,
+                    indent=2,
+                )
+
+            return "Task completed successfully."
+
+    return "Task not found."
