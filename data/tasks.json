@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "title": "Learn LangGraph",
+    "completed": true
+  },
+  {
+    "id": 2,
+    "title": "Learning LangGraph",
+    "completed": true
+  },
+  {
+    "id": 3,
+    "title": "Learning MCP",
+    "completed": false
+  }
+]
