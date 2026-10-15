@@ -1,11 +1,11 @@
 from openai import OpenAI
 
-from core.config import GROQ_API_KEY, MODEL_NAME
+from core.config import OPENROUTER_API_KEY, MODEL_NAME
 from tools.registry import TOOL_SCHEMAS
 
 client = OpenAI(
-    api_key=GROQ_API_KEY,
-    base_url="https://api.groq.com/openai/v1",
+    api_key=OPENROUTER_API_KEY,
+     base_url="https://openrouter.ai/api/v1",
 )
 
 
