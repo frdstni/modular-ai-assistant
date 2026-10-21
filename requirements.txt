@@ -3,3 +3,4 @@ python-dotenv
 langchain==1.4.6
 langchain-openrouter==0.2.9
 langgraph==1.2.15
+mcp==2.3.0
